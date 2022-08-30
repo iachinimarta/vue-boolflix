@@ -1,6 +1,6 @@
 <template>
     <main>
-        <input type="search" v-model="inputValue"/>
+        <input type="text" v-model="inputValue"/>
         <button @click="callApi">Cerca</button>
 
         
@@ -24,7 +24,8 @@
         data() {
             return {
                 inputValue: '',
-                rispostaApi: []
+                rispostaApi: [],
+                imgSrc: ''
             }
         },
         methods: {
@@ -33,11 +34,11 @@
                 .then(reply => {
                     this.rispostaApi = reply.data.results;
                 });
-            }
-        }
+            },                         
+        },
     }
 </script>
 
-<style>
+<style lang="scss">
 
 </style>
