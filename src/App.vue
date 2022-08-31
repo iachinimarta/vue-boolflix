@@ -31,6 +31,10 @@ export default {
             this.rispostaApiFilm = reply.data.results;
             this.inputValueSaved = inputValue;
 
+            this.rispostaApiFilm.forEach(film => {
+              film.vote_average = Math.round(film.vote_average / 2) ;
+            });
+
             this.gettingSeries();
             this.gettingLanguage();
         })
@@ -42,6 +46,10 @@ export default {
       axios.get('https://api.themoviedb.org/3/search/tv?api_key=c9e49adea6145b4eeb6f6a272ae9bee6&query=' + this.inputValueSaved + '&language=it')
       .then(reply => {
         this.rispostaApiSerieTv = reply.data.results;
+
+        this.rispostaApiSerieTv.forEach(serie => {
+              serie.vote_average = Math.round(serie.vote_average / 2);
+            });
       })
       .catch(err => {
         console.log(err);
