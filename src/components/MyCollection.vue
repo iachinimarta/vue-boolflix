@@ -1,32 +1,33 @@
 <template>
   <div>
-    <div class="d-flex collection-container">
-        <ul>
-            <li v-for="(film, index) in rispostaApiFilm" :key="index">
-                <h1>Film</h1>
+    <div class="collection-container">
+        <h1>Film</h1>
+        <div class="films-container d-flex f-wrap">
+            <div v-for="(film, index) in rispostaApiFilm" :key="index">
+                <div class="img-null" v-if="film.poster_path == null">Nessuna immagine disponibile</div>
+                <img v-else :src="urlBase + film.poster_path" :alt="film.title">
                 <ul>
-                    <li>Titolo: {{film.title}}</li>
+                    <li><h2>{{film.title}}</h2></li>
                     <li>Titolo originale: {{film.original_title}}</li>
                     <li><img class="lang-img" :src="film.original_language" :alt="film.original_language"></li>
                     <li>Voto: {{film.vote_average}}</li>
-                    <div v-if="film.poster_path == null">Nessuna immagine disponibile</div>
-                    <img v-else :src="urlBase + film.poster_path" :alt="film.title">
                 </ul>
-            </li>
-        </ul>
-        <ul>
-            <li v-for="(serie, index) in rispostaApiSerieTv" :key="index">
-                <h1>Serie Tv</h1>
+            </div>
+        </div>
+
+        <h1>Serie Tv</h1>
+        <div class="d-flex f-wrap series-container">
+            <div v-for="(serie, index) in rispostaApiSerieTv" :key="index">
+                <div class="img-null" v-if="serie.poster_path == null">Nessuna immagine disponibile</div>
+                <img v-else :src="urlBase + serie.poster_path" :alt="serie.name">
                 <ul>
-                    <li>Titolo: {{serie.name}}</li>
+                    <li><h2>{{serie.name}}</h2></li>
                     <li>Titolo originale: {{serie.original_name}}</li>
                     <li><img class="lang-img" :src="serie.original_language" :alt="serie.original_language"></li>
                     <li>Voto: {{serie.vote_average}}</li>
-                    <div v-if="serie.poster_path == null">Nessuna immagine disponibile</div>
-                    <img v-else :src="urlBase + serie.poster_path" :alt="serie.name">
                 </ul>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
     
   </div>
@@ -52,6 +53,12 @@
 <style lang="scss">
     .collection-container {
         padding: 20px;
+
+        .img-null {
+            height: 300px;
+            width: 200px;
+            background-color: yellow;
+        }
 
         .lang-img {
             width: 20px;

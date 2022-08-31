@@ -1,8 +1,6 @@
 <template>
-    <main>
-        <div>
-            <MyCollection :rispostaApiFilm="rispostaApiFilm" :rispostaApiSerieTv="rispostaApiSerieTv"/>          
-        </div>
+    <main class="d-flex">       
+        <MyCollection :rispostaApiFilm="rispostaApiFilm" :rispostaApiSerieTv="rispostaApiSerieTv"/>                 
     </main>  
 </template>
 
@@ -22,5 +20,12 @@ import MyCollection from './MyCollection.vue';
 </script>
 
 <style lang="scss">
+@import './styles/Common.scss';
+
+    main {
+        background-color: grey;
+        height: calc(100% - 80px);
+        margin-top: 80px;
+    }
 
 </style>
