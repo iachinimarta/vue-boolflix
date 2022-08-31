@@ -7,7 +7,7 @@
                 <ul>
                     <li>Titolo: {{film.title}}</li>
                     <li>Titolo originale: {{film.original_title}}</li>
-                    <li>Lingua: {{film.original_language}}</li>
+                    <li><img class="lang-img" :src="film.original_language" :alt="film.original_language"></li>
                     <li>Voto: {{film.vote_average}}</li>
                     <div v-if="film.poster_path == null">Nessuna immagine disponibile</div>
                     <img v-else :src="urlBase + film.poster_path" :alt="film.title">
@@ -20,7 +20,7 @@
                 <ul>
                     <li>Titolo: {{serie.name}}</li>
                     <li>Titolo originale: {{serie.original_name}}</li>
-                    <li>Lingua: {{serie.original_language}}</li>
+                    <li><img class="lang-img" :src="serie.original_language" :alt="serie.original_language"></li>
                     <li>Voto: {{serie.vote_average}}</li>
                     <div v-if="serie.poster_path == null">Nessuna immagine disponibile</div>
                     <img v-else :src="urlBase + serie.poster_path" :alt="serie.name">
@@ -52,6 +52,10 @@
 <style lang="scss">
     .collection-container {
         padding: 20px;
+
+        .lang-img {
+            width: 20px;
+        }
     }
 
 </style>
