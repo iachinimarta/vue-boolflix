@@ -8,6 +8,7 @@
                 <li>Titolo originale: {{film.original_title}}</li>
                 <li>Lingua: {{film.original_language}}</li>
                 <li>Voto: {{film.vote_average}}</li>
+                <img :src="urlBase + film.poster_path" :alt="film-title">
             </ul>
         </li>
     </ul>
@@ -19,6 +20,7 @@
                 <li>Titolo originale: {{serie.original_name}}</li>
                 <li>Lingua: {{serie.original_language}}</li>
                 <li>Voto: {{serie.vote_average}}</li>
+                <img :src="urlBase + serie.poster_path" :alt="serie-title">
             </ul>
         </li>
     </ul>
@@ -30,7 +32,7 @@
         name: 'MyCollection',
         data() {
             return {
-            
+                urlBase: 'https://image.tmdb.org/t/p/w185'           
             }
         },
         props: {
