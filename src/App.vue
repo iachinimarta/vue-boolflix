@@ -20,7 +20,8 @@ export default {
     return {
       rispostaApiFilm: [],
       rispostaApiSerieTv: [],
-      inputValueSaved: ''
+      originalLanguage: [],
+      inputValueSaved: '',
     }
   },
   methods: {
@@ -29,7 +30,9 @@ export default {
         .then(reply => {
             this.rispostaApiFilm = reply.data.results;
             this.inputValueSaved = inputValue;
+
             this.gettingSeries();
+            this.gettingLanguage();
         })
         .catch(err => {
           console.log(err);
@@ -43,11 +46,19 @@ export default {
       .catch(err => {
         console.log(err);
       });
-    }                     
+    },
+    gettingLanguage() {
+      this.rispostaApiFilm.forEach(film => {
+        if(!this.originalLanguage.includes(film.original_language)) {
+          this.originalLanguage.push(film.original_language);
+        }    
+      });
+    }                   
   }
 }
 </script>
 
 <style lang="scss">
   @import '~@fortawesome/fontawesome-free/css/all.css';
+  @import './components/styles/Common.scss';
 </style>
