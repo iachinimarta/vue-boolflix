@@ -11,7 +11,7 @@
                     
                     <div class="overlay">
                         <span class="description word-wrap">
-                            <ul>
+                            <ul class="description-text">
                                 <li>Genere: Film</li>
                                 <li>Titolo originale: {{film.original_title}}</li>
                                 <li><img class="lang-img" :src="film.original_language" :alt="film.original_language"></li>
@@ -78,7 +78,8 @@
         padding: 20px;
 
         .element {
-            margin: 10px;;
+            margin: 10px;
+            cursor: pointer;
         }
 
         .wrapper {
@@ -91,7 +92,7 @@
             }
 
             .overlay {
-                background-color: rgba(0, 0, 0, 0.5);
+                background-color: rgba(0, 0, 0, 0.8);
                 width: 100%;
                 height: 100%;
                 position: absolute;
@@ -102,6 +103,10 @@
                 .description {
                     font-weight: bold;
                     color: white;
+
+                    .description-text {
+                        padding: 20px;
+                    }
                 }
             }
             
@@ -120,7 +125,12 @@
 
         .lang-img {
             width: 25px;
+            text-align: center;
         }
+    }
+
+    .wrapper:hover .overlay {
+        display: block;
     }
 
 </style>

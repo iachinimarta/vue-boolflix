@@ -48,11 +48,7 @@
     .fa-circle-xmark {
       color: red;
       margin-left: 10px;
-    }
-
-    .logo-text {
-      color: red;
-      font-size: 2rem;
+      cursor: pointer;
     }
   }
 
