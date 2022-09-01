@@ -26,7 +26,6 @@
 </script>
 
 <style lang="scss">
-@import './styles/Common.scss';
 
   header {
     height: 80px;
