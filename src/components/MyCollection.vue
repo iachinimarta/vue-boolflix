@@ -13,11 +13,19 @@
                         <span class="description word-wrap">
                             <ul class="description-text">
                                 <li>Genere: Film</li>
+                                <li>Titolo: {{film.title}}</li>
                                 <li>Titolo originale: {{film.original_title}}</li>
-                                <li><img class="lang-img" :src="film.original_language" :alt="film.original_language"></li>
                                 <li>
-                                    <i v-for="n in 5" :key="n" class="fa-star" :class="(film.vote_average > n)?'fa-solid':'fa-regular'" ></i>
+                                    Voto: <i v-for="n in 5" :key="n" class="fa-star" :class="(film.vote_average > n)?'fa-solid':'fa-regular'" ></i>
                                 </li>
+                                <li>Overview:</li>
+                                <li class="overview-section">{{film.overview}}</li>
+                                <li>
+                                    <div class="lang-container">
+                                        <img class="lang-img" :src="film.original_language" :alt="film.original_language">
+                                    </div>
+                                </li>
+
                             </ul>
                         </span>
                     </div>
@@ -77,6 +85,10 @@
     .collection-container {
         padding: 20px;
 
+        .films-container {
+            justify-content: center;
+        }
+
         .element {
             margin: 10px;
             cursor: pointer;
@@ -101,15 +113,25 @@
                 display: none;
 
                 .description {
-                    font-weight: bold;
                     color: white;
-
+                                     
                     .description-text {
-                        padding: 20px;
+                        padding: 20px; 
+                        
+                        .overview-section {
+                            
+                            width: 150px;
+                            overflow:hidden;
+                            white-space:nowrap;
+                            text-overflow:ellipsis;
+                        }
+                        
+                        .fa-star {
+                            color: gold;
+                        }
                     }
                 }
             }
-            
         }
 
         .word-wrap {
@@ -123,10 +145,14 @@
             background-color: yellow;
         }
 
-        .lang-img {
-            width: 25px;
+        .lang-container {
             text-align: center;
+
+            .lang-img {
+                width: 25px;
+            }   
         }
+        
     }
 
     .wrapper:hover .overlay {

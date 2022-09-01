@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <MyHeader @callApi="callingApi"/>
-    <MyMain :rispostaApiFilm="rispostaApiFilm" :rispostaApiSerieTv="rispostaApiSerieTv"/>
+    <div class="prova">
+      <MyHeader @callApi="callingApi"/>
+      <MyMain :rispostaApiFilm="rispostaApiFilm" :rispostaApiSerieTv="rispostaApiSerieTv"/>
+    </div>
+    
   </div>
 </template>
 
@@ -84,4 +87,9 @@ export default {
 <style lang="scss">
   @import '~@fortawesome/fontawesome-free/css/all.css';
   @import './components/styles/Common.scss';
+
+  .prova {
+    background-color: grey;
+    height: 100vh;
+  }
 </style>

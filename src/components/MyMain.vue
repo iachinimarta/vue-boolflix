@@ -1,6 +1,5 @@
 <template>
     <main class="d-flex">
-        <div class="logo-text init">BOOLFLIX</div>
         <div class="component-container">
             <MyCollection :rispostaApiFilm="rispostaApiFilm" :rispostaApiSerieTv="rispostaApiSerieTv"/> 
         </div>                      
@@ -27,13 +26,7 @@ import MyCollection from './MyCollection.vue';
 
     main {
         background-color: grey;
-        height: calc(100% - 80px);
         margin-top: 80px;
-        justify-content: center;
-
-        .init {
-
-        }
         
         .component-container {
             width: 90%;
