@@ -7,10 +7,10 @@
                 <div class="img-null" v-if="film.poster_path == null">Nessuna immagine disponibile</div>
                 <img v-else :src="urlBase + film.poster_path" :alt="film.title">
                 <ul>
-                    <li><h2>{{film.title}}</h2></li>
-                    <li>Titolo originale: {{film.original_title}}</li>
+                    <li class="title"><h2>{{film.title}}</h2></li>
+                    <li class="title">Titolo originale: {{film.original_title}}</li>
                     <li><img class="lang-img" :src="film.original_language" :alt="film.original_language"></li>
-                    <li>Voto: {{film.vote_average}}</li>
+                    <li class="title">Voto: {{film.vote_average}}</li>
                 </ul>
             </div>
         </div>
@@ -21,10 +21,10 @@
                 <div class="img-null" v-if="serie.poster_path == null">Nessuna immagine disponibile</div>
                 <img v-else :src="urlBase + serie.poster_path" :alt="serie.name">
                 <ul>
-                    <li><h2>{{serie.name}}</h2></li>
-                    <li>Titolo originale: {{serie.original_name}}</li>
+                    <li class="title"><h2>{{serie.name}}</h2></li>
+                    <li class="title">Titolo originale: {{serie.original_name}}</li>
                     <li><img class="lang-img" :src="serie.original_language" :alt="serie.original_language"></li>
-                    <li>Voto: {{serie.vote_average}}</li>
+                    <li class="title">Voto: {{serie.vote_average}}</li>
                 </ul>
             </div>
         </div>
@@ -54,6 +54,11 @@
     .collection-container {
         padding: 20px;
 
+        .title {
+            width: 200px;
+            word-wrap: break-word;
+        }
+
         .img-null {
             height: 300px;
             width: 200px;
@@ -61,7 +66,7 @@
         }
 
         .lang-img {
-            width: 20px;
+            width: 25px;
         }
     }
 

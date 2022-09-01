@@ -59,7 +59,7 @@ export default {
           } else if (media.original_language == 'en') {
             media.original_language = require('./assets/Flags/united_kingdom.png')
           } else {
-            media.original_language = '?';
+            media.original_language = require('./assets/Flags/other.png');
           }
         });   
 
