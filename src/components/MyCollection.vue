@@ -1,39 +1,58 @@
 <template>
   <div>
     <div class="collection-container">
-        <h1>Film</h1>
         <div class="films-container d-flex f-wrap">
-            <div v-for="(film, index) in rispostaApiFilm" :key="index">
-                <div class="img-null" v-if="film.poster_path == null">Nessuna immagine disponibile</div>
-                <img v-else :src="urlBase + film.poster_path" :alt="film.title">
-                <ul>
-                    <li class="title"><h2>{{film.title}}</h2></li>
-                    <li class="title">Titolo originale: {{film.original_title}}</li>
-                    <li><img class="lang-img" :src="film.original_language" :alt="film.original_language"></li>
-                    <li>
-                        <i v-for="n in 5" :key="n" class="fa-star" :class="(film.vote_average > n)?'fa-solid':'fa-regular'" ></i>
-                    </li>
-                </ul>
+
+            <div class="element" v-for="(film, index) in rispostaApiFilm" :key="index">
+
+                <div class="wrapper">
+                    <div class="img-null" v-if="film.poster_path == null">Nessuna immagine disponibile</div>
+                    <img class="poster-img" v-else :src="urlBase + film.poster_path" :alt="film.title">
+                    
+                    <div class="overlay">
+                        <span class="description word-wrap">
+                            <ul>
+                                <li>Genere: Film</li>
+                                <li>Titolo originale: {{film.original_title}}</li>
+                                <li><img class="lang-img" :src="film.original_language" :alt="film.original_language"></li>
+                                <li>
+                                    <i v-for="n in 5" :key="n" class="fa-star" :class="(film.vote_average > n)?'fa-solid':'fa-regular'" ></i>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+                <h4 class="word-wrap">{{film.title}}</h4>
             </div>
+
         </div>
 
-        <h1>Serie Tv</h1>
         <div class="d-flex f-wrap series-container">
-            <div v-for="(serie, index) in rispostaApiSerieTv" :key="index">
-                <div class="img-null" v-if="serie.poster_path == null">Nessuna immagine disponibile</div>
-                <img v-else :src="urlBase + serie.poster_path" :alt="serie.name">
-                <ul>
-                    <li class="title"><h2>{{serie.name}}</h2></li>
-                    <li class="title">Titolo originale: {{serie.original_name}}</li>
-                    <li><img class="lang-img" :src="serie.original_language" :alt="serie.original_language"></li>
-                    <li>
-                        <i v-for="n in 5" :key="n" class="fa-star" :class="(serie.vote_average > n)?'fa-solid':'fa-regular'" ></i>
-                    </li>
-                </ul>
+
+            <div class="element" v-for="(serie, index) in rispostaApiSerieTv" :key="index">
+
+                <div class="wrapper">
+                    <div class="img-null" v-if="serie.poster_path == null">Nessuna immagine disponibile</div>
+                    <img class="poster-img" v-else :src="urlBase + serie.poster_path" :alt="serie.name">
+                    
+                    <div class="overlay">
+                        <span class="description word-wrap">
+                            <ul>
+                                <li>Genere: Serie Tv</li>
+                                <li>Titolo originale: {{serie.original_name}}</li>
+                                <li><img class="lang-img" :src="serie.original_language" :alt="serie.original_language"></li>
+                                <li>
+                                    <i v-for="n in 5" :key="n" class="fa-star" :class="(serie.vote_average > n)?'fa-solid':'fa-regular'" ></i>
+                                </li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+                <h4 class="word-wrap">{{serie.name}}</h4>
             </div>
+
         </div>
-    </div>
-    
+        </div>  
   </div>
 </template>
 
@@ -58,7 +77,37 @@
     .collection-container {
         padding: 20px;
 
-        .title {
+        .element {
+            margin: 10px;;
+        }
+
+        .wrapper {
+            position: relative;
+            border: 1px solid black;
+
+            .poster-img {
+                display: block;
+                height: 300px;
+            }
+
+            .overlay {
+                background-color: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: none;
+
+                .description {
+                    font-weight: bold;
+                    color: white;
+                }
+            }
+            
+        }
+
+        .word-wrap {
             width: 200px;
             word-wrap: break-word;
         }

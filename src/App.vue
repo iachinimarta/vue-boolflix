@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <MyHeader @callApiFilm="gettingFilms"/>
+    <MyHeader @callApi="callingApi"/>
     <MyMain :rispostaApiFilm="rispostaApiFilm" :rispostaApiSerieTv="rispostaApiSerieTv"/>
   </div>
 </template>
@@ -18,18 +18,26 @@ export default {
   },
   data() {
     return {
+      apiParams: {
+        filmEndPoint: 'https://api.themoviedb.org/3/search/movie?api_key=c9e49adea6145b4eeb6f6a272ae9bee6&query=',
+        serieEndPoint: 'https://api.themoviedb.org/3/search/tv?api_key=c9e49adea6145b4eeb6f6a272ae9bee6&query=',
+        language: '&language=it'
+      },     
       rispostaApiFilm: [],
       rispostaApiSerieTv: [],
       inputValueSaved: '',
     }
   },
   methods: {
+    callingApi(inputValue) {
+      this.inputValueSaved = inputValue; 
+      this.gettingFilms(inputValue);
+      this.gettingSeries(inputValue);     
+    },
     gettingFilms(inputValue) {
-        axios.get('https://api.themoviedb.org/3/search/movie?api_key=c9e49adea6145b4eeb6f6a272ae9bee6&query=' + inputValue + '&language=it')
+        axios.get(this.apiParams.filmEndPoint + inputValue + this.apiParams.language)
         .then(reply => {
-            this.rispostaApiFilm = reply.data.results;
-            this.inputValueSaved = inputValue;
-            this.gettingSeries();
+            this.rispostaApiFilm = reply.data.results;                    
             this.gettingFlags(this.rispostaApiFilm);
             this.gettingVoteAverage(this.rispostaApiFilm);
         })
@@ -38,7 +46,7 @@ export default {
         });
     },
     gettingSeries() {
-      axios.get('https://api.themoviedb.org/3/search/tv?api_key=c9e49adea6145b4eeb6f6a272ae9bee6&query=' + this.inputValueSaved + '&language=it')
+      axios.get(this.apiParams.serieEndPoint + this.inputValueSaved + this.apiParams.language)
       .then(reply => {
         this.rispostaApiSerieTv = reply.data.results;       
         this.gettingFlags(this.rispostaApiSerieTv);

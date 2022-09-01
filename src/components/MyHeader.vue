@@ -2,8 +2,8 @@
   <header class="d-flex">
     <div class="logo-text">BOOLFLIX</div>
     <div class="input-container">
-      <input type="text" v-model="inputValue" placeholder="Inserisci un titolo.."/>
-      <button @click="$emit('callApiFilm', inputValue)">Cerca</button>
+      <input class="input-bar" type="text" v-model="inputValue" placeholder="Inserisci un titolo" @keyup.enter="$emit('callApi', inputValue)"/>
+      <i @click="ereaseInput" class="fa-regular fa-circle-xmark"></i>
     </div>
     
   </header>
@@ -16,7 +16,12 @@
             return {
                inputValue: '',
             }
-        }       
+        },
+        methods: {
+          ereaseInput() {
+            this.inputValue = ''
+          }
+        }    
     }
 </script>
 
@@ -33,6 +38,17 @@
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 999;
+
+    .input-bar {
+      border-radius: 5px;
+      padding: 4px;
+    }
+
+    .fa-circle-xmark {
+      color: red;
+      margin-left: 10px;
+    }
 
     .logo-text {
       color: red;

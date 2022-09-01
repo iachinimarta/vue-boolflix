@@ -1,6 +1,8 @@
 <template>
-    <main class="d-flex">       
-        <MyCollection :rispostaApiFilm="rispostaApiFilm" :rispostaApiSerieTv="rispostaApiSerieTv"/>                 
+    <main class="d-flex">
+        <div class="component-container">
+            <MyCollection :rispostaApiFilm="rispostaApiFilm" :rispostaApiSerieTv="rispostaApiSerieTv"/> 
+        </div>                      
     </main>  
 </template>
 
@@ -26,6 +28,11 @@ import MyCollection from './MyCollection.vue';
         background-color: grey;
         height: calc(100% - 80px);
         margin-top: 80px;
+        
+        .component-container {
+            width: 90%;
+            margin: auto;
+        }
     }
 
 </style>
