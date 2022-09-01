@@ -10,7 +10,9 @@
                     <li class="title"><h2>{{film.title}}</h2></li>
                     <li class="title">Titolo originale: {{film.original_title}}</li>
                     <li><img class="lang-img" :src="film.original_language" :alt="film.original_language"></li>
-                    <li class="title">Voto: {{film.vote_average}}</li>
+                    <li>
+                        <i v-for="n in 5" :key="n" class="fa-star" :class="(film.vote_average > n)?'fa-solid':'fa-regular'" ></i>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -24,7 +26,9 @@
                     <li class="title"><h2>{{serie.name}}</h2></li>
                     <li class="title">Titolo originale: {{serie.original_name}}</li>
                     <li><img class="lang-img" :src="serie.original_language" :alt="serie.original_language"></li>
-                    <li class="title">Voto: {{serie.vote_average}}</li>
+                    <li>
+                        <i v-for="n in 5" :key="n" class="fa-star" :class="(serie.vote_average > n)?'fa-solid':'fa-regular'" ></i>
+                    </li>
                 </ul>
             </div>
         </div>
